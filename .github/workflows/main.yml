@@ -2,7 +2,7 @@ name: Hexo Build & Deploy - Private to Public
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
