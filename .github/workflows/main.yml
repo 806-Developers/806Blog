@@ -1,63 +1,32 @@
-name: Deploy
+name: Hexo Build & Deploy - Private to Public
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: A job to deploy blog.
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-      with:
-        submodules: true # Checkout private submodules(themes or something else).
-    - name: nodejs installation
-      uses: actions/setup-node@v2
-      with:
-        node-version: "18"
-    # # Caching dependencies to speed up workflows. (GitHub will remove any cache entries that have not been accessed in over 7 days.)
-    # - name: Cache node modules
-    #   uses: actions/cache@v1
-    #   id: cache
-    #   with:
-    #     path: node_modules
-    #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-node-
-    - name: Install Dependencies
-      # if: steps.cache.outputs.cache-hit != 'true'
-      run: | 
-        npm install
-        npx hexo g
-        
-    - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
-      with:
-        # The arguments for the `git add` command (see the paragraph below for more info)
-        # Default: '.'
-        add: 'public'
-    
-        # The name of the user that will be displayed as the author of the commit.
-        # Default: depends on the default_author input
-        author_name: action-bot
-    
-        # The email of the user that will be displayed as the author of the commit.
-        # Default: depends on the default_author input
-        author_email: action-bot@github.com
-    
-        # The name of the custom committer you want to use, if different from the author of the commit.
-        # Default: the name of the author (set with either author_name or default_author)
-        committer_name: action-bot
-    
-        # The email of the custom committer you want to use, if different from the author of the commit.
-        # Default: the email of the author (set with either author_email or default_author)
-        committer_email: action-bot@github.com
-    
-        # Determines the way the action fills missing author name and email. Three options are available:
-        # - github_actor -> UserName <UserName@users.noreply.github.com>
-        # - user_info -> Your Display Name <your-actual@email.com>
-        # - github_actions -> github-actions <email associated with the github logo>
-        # Default: github_actor
-        default_author: github_actor
-        # If this input is set, the action will push the commit to a new branch with this name.
-        # Default: ''
-        new_branch: publish
+      - name: Checkout
+        uses: actions/checkout@v3.0.0
+      - name: Prepare Node env
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+  
+      - name: Hexo
+        run: |
+          npm i -g hexo-cli
+          npm i
+          hexo clean && hexo g
+  
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          repository-name: Soulter/806Blogs
+          branch: master # The branch the action should deploy to.
+          folder: public # The folder the action should deploy.
+          single-commit: true
+          commit-message: "Deploy by source"
