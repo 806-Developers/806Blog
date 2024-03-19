@@ -26,18 +26,38 @@ jobs:
     #       ${{ runner.os }}-node-
     - name: Install Dependencies
       # if: steps.cache.outputs.cache-hit != 'true'
-      run: npm install
-    
-    # Deploy hexo blog website.
-    - name: Deploy
-      id: deploy
-      uses: sma11black/hexo-action@v1.0.3
+      run: | 
+        npm install
+        npx hexo g
+        
+    - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
       with:
-        deploy_key: ${{ secrets.DEPLOY_KEY }}
-        # user_name: your github username  # (or delete this input setting to use bot account)
-        # user_email: your github useremail  # (or delete this input setting to use bot account)
-        # commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
-    # Use the output from the `deploy` step(use for test action)
-    - name: Get the output
-      run: |
-        echo "${{ steps.deploy.outputs.notify }}"
+        # The arguments for the `git add` command (see the paragraph below for more info)
+        # Default: '.'
+        add: 'public'
+    
+        # The name of the user that will be displayed as the author of the commit.
+        # Default: depends on the default_author input
+        author_name: action-bot
+    
+        # The email of the user that will be displayed as the author of the commit.
+        # Default: depends on the default_author input
+        author_email: action-bot@github.com
+    
+        # The name of the custom committer you want to use, if different from the author of the commit.
+        # Default: the name of the author (set with either author_name or default_author)
+        committer_name: action-bot
+    
+        # The email of the custom committer you want to use, if different from the author of the commit.
+        # Default: the email of the author (set with either author_email or default_author)
+        committer_email: action-bot@github.com
+    
+        # Determines the way the action fills missing author name and email. Three options are available:
+        # - github_actor -> UserName <UserName@users.noreply.github.com>
+        # - user_info -> Your Display Name <your-actual@email.com>
+        # - github_actions -> github-actions <email associated with the github logo>
+        # Default: github_actor
+        default_author: github_actor
+        # If this input is set, the action will push the commit to a new branch with this name.
+        # Default: ''
+        new_branch: publish
