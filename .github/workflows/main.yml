@@ -25,8 +25,8 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
-          repository-name: Soulter/806Blogs
-          branch: master # The branch the action should deploy to.
+          repository-name: Soulter/806Docs
+          branch: publish # The branch the action should deploy to.
           folder: public # The folder the action should deploy.
           single-commit: true
           commit-message: "Deploy by source"
