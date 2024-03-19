@@ -1,0 +1,37 @@
+<% page.posts.each(function (post) { %>
+    <article class="post post-atmain" itemscope itemtype="http://schema.org/BlogPosting">
+        <h2 class="post-title" itemprop="name headline">
+            <a itemprop="url" class="post-title-link" href="<%- url_for(post.path) %>">
+                <%= post.title %>
+            </a>
+        </h2>
+        <ul class="post-meta">
+            <li>
+                <time datetime="2020-09-04T20:18:00+00:00" itemprop="datePublished">
+                    <%- date(post.date, "YYYY-MM-DD" ) %>
+                </time>
+            </li>
+            <li>
+            <%- list_categories(post.categories, {
+                show_count: false,
+                style: 'none',
+                separator: '►'
+              }) %>
+            </li>
+        </ul>
+        <div class="post-content">
+            <% if (post.excerpt) { %> 
+                <%- lazyloadImage(post.excerpt) %>
+            <% } else { %>
+                <% if (theme.auto_excerpt.enable === true) { %> 
+                    <%- truncate(strip_html(post.content), {length: theme.auto_excerpt.length}) %>
+                <% } %> 
+            <% } %> 
+            <p class="more">
+                <a href="<%- url_for(post.path) %>">READ MORE</a>
+            </p>
+        </div>
+    </article>
+<% }) %>
+
+<%- partial('_partial/paginator') %>

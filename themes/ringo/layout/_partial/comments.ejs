@@ -1,0 +1,15 @@
+<% if(!is_home() && !is_archive() && !is_tag() && !is_category()) { %> 
+<div id="comments">
+    <% if (theme.comments.use === 'Gitalk') { %> 
+        <%- partial('comment/gitalk') %>
+    <% } else if (theme.comments.use === 'Disqus') { %>
+        <%- partial('comment/disqus') %>
+    <% } else if (theme.comments.use === 'Valine') { %>
+        <%- partial('comment/valine') %>
+    <% } else if (theme.comments.use === 'Livere') { %>
+        <%- partial('comment/livere') %>
+    <% } else if (theme.comments.use === 'DisqusJS') { %>
+        <%- partial('comment/disqusjs') %>
+    <% } %> 
+</div>
+<% } %> 

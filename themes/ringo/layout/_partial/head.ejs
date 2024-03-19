@@ -1,0 +1,17 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>
+        <%- page_title() %> 
+    </title>
+    <% if (theme.canonical === true) { %> 
+        <link rel="canonical" href="<%= full_url_for(page.path).replace('index.html', '') %>">
+    <% } %> 
+    <%- css("css/grid.css") %>
+    <%- css("css/custom.css") %>
+    <%- css("css/ringo.css") %>
+    <% if (theme.favicon) { %> 
+        <link rel="icon" type="image/x-icon" href="<%= url_for(theme.favicon) %> " />
+    <% } %> 
+    <%- partial('head/site_verification') %>
+</head>

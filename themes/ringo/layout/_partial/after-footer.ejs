@@ -1,0 +1,26 @@
+<!-- highlight support -->
+<% if(theme.highlight.enable === true) { %>
+    <%- partial('plugin/highlight') %>
+<% } %> 
+<!-- prettify support -->
+<% if(theme.prettify.enable === true) { %>
+    <%- partial('plugin/prettify') %>
+<% } %> 
+<!-- mathjax support -->
+<% if (theme.mathjax.enable && (theme.mathjax.per_page || page.mathjax)){ %>
+    <%- partial('plugin/mathjax') %>
+<% } %>
+<!-- fancybox support -->
+<% if(theme.fancybox === true && page.fancybox !== false) { %>
+    <%- partial('plugin/fancybox') %>
+<% } %> 
+<!-- viewerjs support -->
+<% if(theme.viewerjs === true && page.viewrjs !== false) { %>
+    <%- partial('plugin/viewerjs') %>
+<% } %> 
+<!-- google analytics support -->
+<%- partial('plugin/analytic') %>
+<!-- lazyload support -->
+<% if(theme.lazyload.enable === true) { %>
+    <%- partial('plugin/lazyload') %>
+<% } %> 

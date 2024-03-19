@@ -1,0 +1,147 @@
+
+# html lang
+language: zh-CN
+
+# main menu navigation
+menu:
+  #Home: /
+  #About: /about
+  #Contact: /contact
+  #Archives: /archives
+
+# Highlight.js
+# Theme: https://highlightjs.org/static/demo/
+highlight:
+  enable: true
+  theme: default
+
+# Prettify
+# Theme: https://jmblog.github.io/color-themes-for-google-code-prettify/
+prettify:
+  enable: false
+  theme: tomorrow
+
+footer:
+  owner:
+    enable: true
+    since: 2020
+  custom_text: 
+  ICP: # Chinese ICP License
+    enable: false
+    url:
+    text:
+
+favicon: /img/favicon.ico
+
+canonical: false
+
+auto_excerpt:
+  enable: true
+  length: 150
+
+busuanzi:
+  enable: true
+
+post_copyright:
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+mathjax:
+  enable: true
+  per_page: true
+
+# Verification (站长验证)
+site_verification:
+ - name: google-site-verification
+   content: 
+ - name: baidu-site-verification
+   content: 
+
+# Lazyload (图片懒加载)
+# https://github.com/verlok/lazyload
+lazyload:
+  enable: true
+  loading_image: /img/loading.gif
+
+# Viewer.js support
+viewerjs: true
+
+# Fancybox support
+fancybox: false
+
+# Analysis
+
+# Baidu Analytics
+# https://tongji.baidu.com/web/welcome/login
+baidu_analytics:
+
+# Google Analytics
+# https://analytics.google.com/analytics/web/
+google_analytics:
+
+# Tencent Analytics ID
+# https://mta.qq.com
+tencent_analytics:
+
+# CNZZ Analytics
+# https://www.umeng.com/
+cnzz_analytics:
+
+# Cloudflare Analytics
+# https://www.cloudflare.com/zh-tw/web-analytics/
+cloudflare_analytics:
+
+# Microsoft Clarity
+# https://clarity.microsoft.com/
+microsoft_clarity:
+
+# Comments System
+# use: Gitalk / Disqus / DisqusJS / Livere / Valine
+comments:
+  use: 
+
+# Gitalk
+# https://github.com/gitalk/gitalk
+gitalk:
+  owner: 
+  repo: 
+  admin: 
+  clientID: 
+  clientSecret: 
+
+# Disqus
+# https://disqus.com/
+disqus:
+  shortname: 
+
+# DisqusJS
+# https://github.com/SukkaW/DisqusJS
+disqusjs:
+  shortname:
+  siteName:
+  api:
+  apikey:
+  admin:
+  adminLabel:
+
+# Livere (來必力)
+# https://www.livere.com/
+livere:
+  uid:
+
+# Valine
+# https://valine.js.org
+valine:
+  appId: # leancloud application app id
+  appKey: # leancloud application app key
+  pageSize: 10 # comment list page size
+  avatar: monsterid # gravatar style https://valine.js.org/#/avatar
+  lang: zh-CN # i18n: zh-CN/zh-TW/en/ja
+  placeholder: Please leave your footprints # valine comment input placeholder (like: Please leave your footprints)
+  guest_info: nick,mail,link # valine comment header info (nick/mail/link)
+  recordIP: false # Record reviewer IP
+  serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
+  bg: # valine background
+  emojiCDN: # emoji CDN
+  enableQQ: false # enable the Nickname box to automatically get QQ Nickname and QQ Avatar

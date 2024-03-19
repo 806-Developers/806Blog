@@ -1,0 +1,12 @@
+<%- css("prettify/prettify.css") %>
+<%- css('https://cdn.jsdelivr.net/npm/color-themes-for-google-code-prettify@2.0.4/dist/themes/' + theme.prettify.theme + '.min.css' ) %>
+<%- js(url_for("prettify/prettify.js")) %>
+
+<script>
+    let prettifyel = document.querySelectorAll('pre');
+    for (let i = 0; i < (prettifyel || []).length; i += 1) {
+        prettifyel[i].classList.add('prettyprint');
+        prettifyel[i].classList.add('linenums');
+    }
+    PR.prettyPrint();
+</script>
